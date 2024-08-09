@@ -14,5 +14,11 @@ class MovieSeeder extends Seeder
      */
     public function run(): void
     {
+        $movies = Movie::factory(10)->create();
+        $categories = Category::all();
+        foreach ($movies as $movie) {
+            $randomCategories = $categories->random(rand(1, 3))->pluck('id');
+            $movie->categories()->attach($randomCategories);
+        }
     }
 }
