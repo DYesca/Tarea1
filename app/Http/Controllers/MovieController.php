@@ -14,4 +14,10 @@ class MovieController extends Controller
         $movies = Movie::all();
         return view('movies.index' , [ 'movies' => $movies]);
     }
+
+    public function showmoviesbygenero($genero)
+    {
+        $movies = Movie::where('genero', $genero)->get();
+        return view('movies.index' , [ 'movies' => $movies]);
+    }
 }

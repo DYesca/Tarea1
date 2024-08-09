@@ -25,4 +25,10 @@ class Movie extends Model
     {
         return $this->belongsTo(Studio::class);
     }
+
+    public function getmoviesbygenero($generoname)
+    {
+        $movies = Movie::where('genero', $generoname)->get();
+        return view('movies.index' , [ 'movies' => $movies]);
+    }
 }
